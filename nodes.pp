@@ -1,8 +1,6 @@
 # solaris 10 update 7
 
-node 'sunnyboy' {
-  include solaris, baseclass
-}
+node 'sunnyboy' { include solaris }
 
 # centOS 5.3 boxes
 node 'node01' { include baseclass }

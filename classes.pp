@@ -1,7 +1,12 @@
-# things that apply to every OS
+# classes included here need to handle
+# different OSes
 class baseclass {
   include mailsetup
   include sshsetup
+  include ntpsetup
+
+  #give fair warning
+  file { "/etc/motd": content => 'This box is managed by Puppet.' }
 }
 
 # Solaris-specific resources
@@ -30,8 +35,7 @@ class mailsetup {
 }
 
 # take care of SSHing into the box as root
-# assume package was installed via
-# our base Solaris and Linux kick/jumpstart
+# assume package was installed via kick/jumpstart
 class sshsetup {
 
   # same place on Solaris and CentOS
@@ -45,6 +49,28 @@ class sshsetup {
     ensure => running,
   }
 
-import  'pubkey'
-include  'pubkey'
+# this goes into a separate file for safety
+import 'pubkey'
+include 'pubkey'
+}
+
+# enable NTP
+class ntpsetup {
+
+    file { "ntp.conf" :
+      name => $operatingsystem? {
+        CentOS => '/etc/ntp.conf',
+        Solaris => '/etc/inet/ntp.conf'
+      },
+      content => 'server 10.0.0.254',
+      notify => Service['ntp']
+    }
+
+    service { "ntp" :
+      name => $operatingsystem? {
+        CentOS => 'ntpd',
+        default => 'ntp',
+      },
+      ensure => running
+    }
 }

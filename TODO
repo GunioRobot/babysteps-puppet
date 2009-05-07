@@ -6,3 +6,4 @@
     to fix the above.
 * NTP.
     Clocks are wildly out on Virtualboxes.
+* fix package { "foo" : ensure => installed }

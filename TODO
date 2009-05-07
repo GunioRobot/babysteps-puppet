@@ -1,0 +1,6 @@
+* set "PermitRootLogin without-password"
+    Trivial to do on CentOS, where it's the default.
+    Can't use Augeas on Solarus as it's a Redhat thing. 
+    >_<
+* NTP.
+    Clocks are wildly out on Virtualboxes.

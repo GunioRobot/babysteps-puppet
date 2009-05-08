@@ -1,9 +1,2 @@
-* set "PermitRootLogin without-password"
-    Trivial to do on CentOS, where it's the default.
-    Can't use Augeas on Solarus as it's a Redhat thing. 
-    >_<
-* enable templating
-    to fix the above.
-* NTP.
-    Clocks are wildly out on Virtualboxes.
-* fix package { "foo" : ensure => installed }
+* simple mysql install
+

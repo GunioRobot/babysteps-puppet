@@ -1,29 +1,13 @@
-# classes included here need to handle
-# different OSes
+# classes common to all servers
 class baseclass {
-  include mailsetup
-  include sshsetup
-  include ntpsetup
+  include mailsetup, sshsetup, ntpsetup
 
   #give fair warning
   file { "/etc/motd": content => 'This box is managed by Puppet.' }
 }
 
-# Solaris-specific resources
-class solaris {
-  include 'baseclass'
-  # don't need a GUI
-  service { "cde-login": ensure => stopped }
-}
-
-# CentOS-specific resources
-class centos {
-  include 'baseclass'
-}
-
 # handles mail forwarding
 class mailsetup {
-  # uses global $PATH as set in site.pp
   exec { "newaliases": refreshonly => true }
 
   mailalias { "rootalias":
@@ -37,17 +21,15 @@ class mailsetup {
 # take care of SSHing into the box as root
 # assume package was installed via kick/jumpstart
 class sshsetup {
+  $permitrootlogin = 'without-password'
 
-  # same place on Solaris and CentOS
-  file { "/etc/ssh/sshd_config" : notify => Service['ssh'] }
-
-  service { "ssh" :
-    name => $operatingsystem? {
-      CentOS => 'sshd', 
-      default => 'ssh'
-    },
-    ensure => running,
+  file { "/etc/ssh/sshd_config" :
+    notify => Service['sshd'],
+    content => template("sshd_config.erb"),
   }
+
+  service { "sshd" : ensure => running }
+  package { "openssh-server" : ensure => present }
 
 # this goes into a separate file for safety
 import 'pubkey'
@@ -57,20 +39,14 @@ include 'pubkey'
 # enable NTP
 class ntpsetup {
 
+    $ntpserver = '10.0.0.254'
+
     file { "ntp.conf" :
-      name => $operatingsystem? {
-        CentOS => '/etc/ntp.conf',
-        Solaris => '/etc/inet/ntp.conf'
-      },
-      content => 'server 10.0.0.254',
-      notify => Service['ntp']
+      name => '/etc/ntp.conf',
+      content => template('ntp.conf.erb'),
+      notify => Service['ntpd']
     }
 
-    service { "ntp" :
-      name => $operatingsystem? {
-        CentOS => 'ntpd',
-        default => 'ntp',
-      },
-      ensure => running
-    }
+    service { "ntpd" : ensure => running }
+    package { "ntp" : ensure => present }
 }

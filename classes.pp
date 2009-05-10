@@ -3,7 +3,7 @@ class baseclass {
   include mailsetup, sshsetup, ntpsetup
 
   #give fair warning
-  file { "/etc/motd": content => 'This box is managed by Puppet.' }
+  file { "/etc/motd": content => "This box is managed by Puppet.\n" }
 }
 
 # handles mail forwarding

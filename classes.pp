@@ -3,7 +3,7 @@ class baseclass {
   # VirtualBox clocks drift so far when laptop sleeps
   # that NTPd can't fix it, so disable in that case
   ## include ntpsetup
-  include mailsetup, sshsetup
+  include mailsetup, sshsetup, toolchain
 
   #give fair warning
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }
@@ -78,4 +78,10 @@ class mysqldb {
     subscribe   => Package['mysql-server'],
     refreshonly => true
   }
+}
+
+# basic compiler etc. - just enough to build VirtualBox guest additions
+class toolchain {
+  package { 'gcc' : ensure => present }
+  package { 'kernel-devel' : ensure => present }
 }

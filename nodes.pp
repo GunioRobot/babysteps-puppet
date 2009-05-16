@@ -4,3 +4,7 @@ node 'node02' { include baseclass }
 node 'node03' {
   include baseclass, mysqldb
 }
+# SLES11 box
+# (haven't made the other things in baseclass
+# portable yet
+node 'iggy' { include mailsetup }

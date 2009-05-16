@@ -15,7 +15,7 @@ class mailsetup {
 
   mailalias { "rootalias":
     ensure    => present,
-    recipient => 'rasputnik@hellooperator.net',
+    recipient => 'root@shoemaker.pixie',
     name      => 'root',
     notify    => Exec['newaliases']
   }

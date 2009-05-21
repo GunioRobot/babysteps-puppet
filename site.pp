@@ -1,4 +1,6 @@
-import "classes"
+import "os/*"
+import "classes/*"
+import "roles"
 import "nodes"
 
 # you can syntax check this file with

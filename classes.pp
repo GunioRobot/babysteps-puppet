@@ -5,9 +5,13 @@ class baseclass {
   ## include ntpsetup
   include mailsetup, sshsetup, toolchain
 
+  package { "koan": ensure => installed }
+
   #give fair warning
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }
 }
+
+class webserver { include baseclass, apache }
 
 # handles mail forwarding
 class mailsetup {
@@ -84,4 +88,21 @@ class mysqldb {
 class toolchain {
   package { 'gcc' : ensure => present }
   package { 'kernel-devel' : ensure => present }
+}
+
+class apache {
+  package { ['httpd', 'mod_ssl', 'mod_perl'] :
+    ensure => present,
+    notify => Service['httpd'] }
+  service { "httpd" :
+    ensure => running,
+    enable => true
+  }
+  # play nice and provide Includes in the right place
+
+  file { "01general.conf" :
+    name => '/etc/httpd/conf.d/01general.conf',
+    notify  => Service['httpd'],
+    content => template("httpd/01general.erb"),
+  }
 }

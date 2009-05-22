@@ -1,13 +1,14 @@
 # NB: don't run this on VMs
-# 'slave NTPd'; keeps up with master server
+# 'slave' NTPD; keeps up with master server(s)
 #
-class slave_ntpd {
+class slave_ntp {
 
-    $ntpmasters = ['10.0.0.254']
+    # list of NTP servers to sync from
+    $ntpmasters = ['shoemaker.pixie']
 
     file { "ntp.conf" :
       name    => '/etc/ntp.conf',
-      content => template('ntp.conf.erb'),
+      content => template('slave_ntp/ntp.conf.erb'),
       notify  => Service['ntpd']
     }
 

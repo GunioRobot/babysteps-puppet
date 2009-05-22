@@ -1,10 +1,10 @@
 # handles mail forwarding
-class root_mail_alias {
+class root_mail {
   exec { "newaliases": refreshonly => true }
 
   mailalias { "rootalias":
     ensure    => present,
-    recipient => 'root@shoemaker.pixie',
+    recipient => 'puppet@shoemaker.pixie',
     name      => 'root',
     notify    => Exec['newaliases']
   }

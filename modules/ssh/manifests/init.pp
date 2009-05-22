@@ -5,7 +5,7 @@ class ssh {
 
   file { "/etc/ssh/sshd_config" :
     notify  => Service['sshd'],
-    content => template("sshd_config.erb"),
+    content => template("ssh/sshd_config.erb"),
   }
 
   service { "sshd" :
@@ -14,7 +14,4 @@ class ssh {
   }
   package { "openssh-server" : ensure => present }
 
-# this goes into a separate file for safety
-import '../pubkey'
-include 'pubkey'
 }

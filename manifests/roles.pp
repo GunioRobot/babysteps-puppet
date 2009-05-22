@@ -10,7 +10,8 @@ class baseclass {
       default: {include rhel}
   }
 
-  include root_mail, ssh
+  include root_mail
+  include ssh
 
   #give fair warning
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }

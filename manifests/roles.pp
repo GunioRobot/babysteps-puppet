@@ -17,5 +17,13 @@ class baseclass {
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }
 }
 
-class webserver { include baseclass, apache }
-class dbserver { include baseclass, mysql }
+class webserver {
+  # include these in the wrong order and you get an error - why?
+  include apache
+  include baseclass
+}
+
+class dbserver {
+  include mysql
+  include baseclass
+}

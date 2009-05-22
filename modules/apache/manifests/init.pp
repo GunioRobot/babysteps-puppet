@@ -6,11 +6,11 @@ class apache {
     ensure => running,
     enable => true
   }
-  # play nice and provide Includes in the right place
 
+  # play nice and provide Includes in the right place
   file { "01general.conf" :
     name => '/etc/httpd/conf.d/01general.conf',
     notify  => Service['httpd'],
-    content => template("httpd/01general.erb"),
+    source => "puppet:///apache/01general.conf"
   }
 }

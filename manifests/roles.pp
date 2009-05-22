@@ -22,8 +22,3 @@ class webserver {
   include apache
   include baseclass
 }
-
-class dbserver {
-  include mysql
-  include baseclass
-}

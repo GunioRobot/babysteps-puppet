@@ -1,0 +1,6 @@
+This node, <%= fqdn %>, has <%= tags.length %> tags.
+They are (in alphabetical order)
+
+<% tags.sort.each do |t| %>
+<%= t -%>
+<% end %>

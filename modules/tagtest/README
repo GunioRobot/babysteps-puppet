@@ -1,0 +1,6 @@
+This module is an experiment with Puppets 'tags' feature
+(see http://reductivelabs.com/trac/puppet/wiki/UsingTags).
+
+Although I don't explicitly define any tags, each node will
+gain tags for each node/class it inherits. This module just 
+dumps a list of them to '/tagtest'.

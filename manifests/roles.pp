@@ -3,6 +3,7 @@
 
 # classes common to all servers
 class baseclass {
+  include tagtest
 
   case $operatingsystem {
       centos: { include centos }
@@ -15,6 +16,7 @@ class baseclass {
 
   #give fair warning
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }
+
 }
 
 class webserver {

@@ -4,3 +4,8 @@ This module is an experiment with Puppets 'tags' feature
 Although I don't explicitly define any tags, each node will
 gain tags for each node/class it inherits. This module just 
 dumps a list of them to '/tagtest'.
+
+XXX not doing what I want. Had hoped putting tagtest at bottom of
+XXX baseclass definition would mean ssh, root_mail, etc. tags
+XXX were all defined, that doesn't seem to be the case.
+XXX Bet this is a inherits/include issue.

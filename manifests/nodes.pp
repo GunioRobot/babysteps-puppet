@@ -5,4 +5,4 @@
 node 'node01' { include webserver }
 node 'node02' { include webserver }
 
-node 'node03' { include dbserver }
+node 'node03' { include baseclass }

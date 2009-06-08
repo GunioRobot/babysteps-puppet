@@ -1,7 +1,8 @@
 class apache {
-  package { ['httpd', 'mod_ssl', 'mod_perl'] :
+  package { 'httpd' :
     ensure => present,
-    notify => Service['httpd'] }
+    notify => Service['httpd']
+  }
   service { "httpd" :
     ensure => running,
     enable => true

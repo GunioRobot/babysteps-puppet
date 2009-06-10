@@ -1,0 +1,8 @@
+This is a general module to distribute custom
+types, facts and providers via plugins to puppet nodes.
+
+you'll need to 'include custom' in your nodes 
+(or edit their puppet.conf by hand, see files/ subdirectory)
+to load this modules plugins.
+
+See http://reductivelabs.com/trac/puppet/wiki/PluginsInModules

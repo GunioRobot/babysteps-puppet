@@ -12,6 +12,7 @@ class baseclass {
 
   include root_mail
   include ssh
+  include custom
 
   #give fair warning
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }

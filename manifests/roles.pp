@@ -5,9 +5,9 @@
 class baseclass {
 
   case $operatingsystem {
-      centos: { include centos }
-      rhel: { include rhel }
-      default: {include rhel}
+    centos: { include centos }
+    rhel: { include rhel }
+    default: {include rhel}
   }
 
   include root_mail
@@ -16,9 +16,6 @@ class baseclass {
 
   #give fair warning
   file { "/etc/motd": content => "This box is managed by Puppet.\n" }
-
-  # Argh. this isn't seeing root_mail/ssh tags etc. defined
-  include tagtest
 }
 
 class webserver {

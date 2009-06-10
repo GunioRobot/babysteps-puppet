@@ -15,7 +15,6 @@ class ssh {
   }
   package { "openssh-server" : ensure => present }
 
-
   ssh_authorized_key { "rasputnik@hellooperator.net" :
     user => 'root',
     type => 'ssh-dss',

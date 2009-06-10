@@ -1,4 +1,5 @@
-class apache {
+class httpd {
+
   package { 'httpd' :
     ensure => present,
     notify => Service['httpd']
@@ -12,6 +13,6 @@ class apache {
   file { "01general.conf" :
     name => '/etc/httpd/conf.d/01general.conf',
     notify  => Service['httpd'],
-    source => "puppet:///apache/01general.conf"
+    source => "puppet:///httpd/01general.conf"
   }
 }

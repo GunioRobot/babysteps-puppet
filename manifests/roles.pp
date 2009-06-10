@@ -15,11 +15,11 @@ class baseclass {
   include custom
 
   #give fair warning
-  file { "/etc/motd": content => "This box is managed by Puppet.\n" }
+  file { "/etc/motd": content => "Welcome to $fqdn. This server is managed by Puppet.\n" }
 }
 
 class webserver {
   # include these in the wrong order and you get an error - why?
-  include apache
+  include httpd
   include baseclass
 }

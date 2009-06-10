@@ -2,6 +2,7 @@
 # assume package was installed via kick/jumpstart
 class ssh {
   $permitrootlogin = 'without-password'
+  $open_firewall = 'on'
 
   file { "/etc/ssh/sshd_config" :
     notify  => Service['sshd'],

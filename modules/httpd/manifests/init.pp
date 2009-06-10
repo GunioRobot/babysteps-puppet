@@ -1,5 +1,7 @@
 class httpd {
 
+  $open_firewall = 'on'
+
   package { 'httpd' :
     ensure => present,
     notify => Service['httpd']

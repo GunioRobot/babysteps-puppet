@@ -1,0 +1,3 @@
+- sort firewall (iptables, the bane of my life)
+- install 'boilerplate' in /etc/httpd/conf.d
+- ensure logs are rotated correctly

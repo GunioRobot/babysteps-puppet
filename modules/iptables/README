@@ -1,8 +1,0 @@
-Dirt simple iptables class.
-
-Every server sets a variable and the template
-enables a chunk of config if the variable is set.
-
-Not the most advanced system in the world
-(you'll need to 'include iptables' last probably),
-but better than nothing.

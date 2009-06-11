@@ -1,0 +1,2 @@
+Simple module to enable 'ldapsearch uid=foo' to work.
+Also installs a  (dummy) organizational root ca.

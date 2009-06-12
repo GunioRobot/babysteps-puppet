@@ -10,13 +10,12 @@ class baseclass {
     default: {include rhel}
   }
 
+  include motd
   include root_mail
   include ssh
   include custom
   include ldap_client
 
-  #give fair warning
-  file { "/etc/motd": content => "Welcome to $fqdn. This server is managed by Puppet.\n" }
 }
 
 class webserver {

@@ -1,0 +1,4 @@
+Simple module to create
+/etc/motd on all nodes.
+Its main purpose is to warn admins
+that they are on a Puppet node.

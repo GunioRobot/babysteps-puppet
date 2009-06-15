@@ -29,10 +29,10 @@ class httpd {
     source => "puppet:///httpd/01general.conf"
   }
 
-  # rotate everything under /var/log/httpd
+  # tweaked logrotate to manage /var/log/httpd/*.log
   file { "logrotate.httpd" :
-    name => '/etc/logrotate.d/httpd',
+    name    => '/etc/logrotate.d/httpd',
     require => Package['httpd'],
-    source => "puppet:///httpd/logrotate.httpd"
+    source  => "puppet:///httpd/logrotate.httpd"
   }
 }

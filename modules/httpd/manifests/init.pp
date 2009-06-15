@@ -1,8 +1,8 @@
 class httpd {
 
   package { 'httpd' :
-    ensure  => present,
-    notify  => Service['httpd']
+    ensure => present,
+    notify => Service['httpd']
   }
   package { ['mod_ssl','mod_dav_svn'] :
     ensure  => present,
@@ -25,6 +25,7 @@ class httpd {
   file { "01general.conf" :
     name   => '/etc/httpd/conf.d/01general.conf',
     notify => Service['httpd'],
+    mode   => 444,
     source => "puppet:///httpd/01general.conf"
   }
 }

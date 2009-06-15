@@ -1,6 +1,6 @@
 class custom {
   file { "/etc/puppet/puppet.conf":
-    mode => 644,
+    mode   => 444,
     source => 'puppet:///custom/puppet.conf' 
   }
 }

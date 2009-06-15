@@ -7,7 +7,7 @@ class ssh {
   file { "/etc/ssh/sshd_config" :
     notify  => Service['sshd'],
     content => template("ssh/sshd_config.erb"),
-    mode => 600
+    mode    => 400
   }
 
   service { "sshd" :

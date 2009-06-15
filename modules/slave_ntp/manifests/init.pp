@@ -9,7 +9,8 @@ class slave_ntp {
     file { "ntp.conf" :
       name    => '/etc/ntp.conf',
       content => template('slave_ntp/ntp.conf.erb'),
-      notify  => Service['ntpd']
+      notify  => Service['ntpd'],
+      mode    => 444
     }
 
     package { "ntp" : ensure => present }

@@ -1,34 +1,62 @@
-class sshusers {
+# simplify creating a local account
+# with no password, but an RSA/DSA key
+#
+# Use this definition like this
+#
+# ssh_user { "captain":
+#   uid     => 5002,
+#   group   => admins,
+#   comment => 'Captain Awesome'
+# }
+#
+# NB: the group has to exist first
+# NB: put the desired public key into files/public_keys/username
+# (see bottom of this file for some examples)
 
-  user { "stinky":
-    home       => '/home/stinky',
+define ssh_user($comment,$uid,$group) {
+
+  # create the user
+  user { "$name":
+    home       => "/home/$name",
     managehome => true,
-    comment    => "Stinky McGinty",
-    gid        => 'sysadmins',
-    require    => Group['sysadmins'],
+    comment    => $comment,
+    gid        => $group,
+    require    => Group[$group],
     ensure     => present,
     password   => 'NP',
-    uid        => 5001,
+    uid        => $uid,
     shell      => '/bin/bash'
   }
 
-  group { "sysadmins" :
-    gid => 5000
-  }
-
-  file { "/home/stinky/.ssh":
+  # create ~/.ssh (~/ is created by User[$name])
+  file { "/home/$name/.ssh":
     ensure  => directory,
     mode    => 700,
-    owner   => stinky,
-    group   => sysadmins,
-    require => User['stinky']
+    owner   => $name,
+    group   => $group,
+    require => User[$name]
+  }
+  file { "/home/$name/.ssh/authorized_keys":
+    source  => "puppet:///sshusers/public_keys/$name",
+    mode    => 400,
+    owner   => $name,
+    group   => $group,
+    require => File["/home/$name/.ssh"]
+  }
+}
+
+class sshusers {
+
+  group { "sysadmins": gid => 5000 }
+  ssh_user { "stinky":
+    comment => "Stinky McGinty",
+    uid     => 5001,
+    group   => 'sysadmins'
+  }
+  ssh_user { "kinky":
+    comment => "Kinky Afro",
+    uid     => 5002,
+    group   => 'sysadmins'
   }
 
-  file { "/home/stinky/.ssh/authorized_keys":
-    source  => "puppet:///sshusers/stinky.pubkey",
-    mode    => 400,
-    owner   => stinky,
-    group   => sysadmins,
-    require => File['/home/stinky/.ssh']
-  }
 }

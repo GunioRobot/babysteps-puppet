@@ -1,9 +1,15 @@
-I know, I know. This is *not* the way to
-setup user accounts.
+I know, I know. This is *not* the way to setup user accounts.
 
-At present, it's a proof of concept that shows
-you don't need to set an actual password to have
-a local account that is sshable.
+It's a proof of concept to setup local accounts and allow a
+given public key to connect to them.
 
-Next step is to abstract this into a definition, 
-then make it a virtual user.
+To create an account, first copy the public key into
+files/public_keys/username, then define a user with
+
+ssh_user { "username":
+  comment => "U. Sername",
+  uid     => 4566,
+  group   => sysadmins
+}
+
+the 'sysadmins' group should exist.

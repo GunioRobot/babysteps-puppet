@@ -1,16 +1,6 @@
 # simplify creating a local account
 # with no password, but an RSA/DSA key
 #
-# Use this definition like this
-#
-# ssh_user { "captain":
-#   uid     => 5002,
-#   group   => admins,
-#   comment => 'Captain Awesome'
-# }
-#
-# NB: the group has to exist first
-# NB: put the desired public key into files/public_keys/username
 # (see bottom of this file for some examples)
 
 define ssh_user($comment,$uid,$group) {

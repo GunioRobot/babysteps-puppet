@@ -1,0 +1,9 @@
+I know, I know. This is *not* the way to
+setup user accounts.
+
+At present, it's a proof of concept that shows
+you don't need to set an actual password to have
+a local account that is sshable.
+
+Next step is to abstract this into a definition, 
+then make it a virtual user.

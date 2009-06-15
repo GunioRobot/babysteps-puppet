@@ -27,4 +27,11 @@ class httpd {
     notify => Service['httpd'],
     source => "puppet:///httpd/01general.conf"
   }
+
+  # rotate everything under /var/log/httpd
+  file { "logrotate.httpd" :
+    name => '/etc/logrotate.d/httpd',
+    require => Package['httpd'],
+    source => "puppet:///httpd/logrotate.httpd"
+  }
 }

@@ -27,7 +27,7 @@ define ssh_user($comment,$uid,$group) {
     require => User[$name]
   }
   file { "/home/$name/.ssh/authorized_keys":
-    source  => "puppet:///sshusers/public_keys/$name",
+    source  => "puppet:///sshusers/authorized_keys/$name",
     mode    => 400,
     owner   => $name,
     group   => $group,

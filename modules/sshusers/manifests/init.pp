@@ -13,7 +13,7 @@ define ssh_user($comment,$uid,$group) {
     gid        => $group,
     require    => Group[$group],
     ensure     => present,
-    password   => 'NP',
+    password   => '!',
     uid        => $uid,
     shell      => '/bin/bash'
   }

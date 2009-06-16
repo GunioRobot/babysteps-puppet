@@ -1,7 +1,7 @@
 # simplify creating a local account
 # with no password, but an RSA/DSA key
 #
-# (see bottom of this file for some examples)
+# (see bottom of file for how this definition is used)
 
 define ssh_user($comment,$uid,$group) {
 
@@ -35,6 +35,7 @@ define ssh_user($comment,$uid,$group) {
   }
 }
 
+# now actually use it
 class sshusers {
 
   group { "sysadmins": gid => 5000 }

@@ -15,11 +15,11 @@ class baseclass {
   include ssh
   include custom
   include ldap_client
-
+  include sshusers
 }
 
 class webserver {
-  # include these in the wrong order and you get an error - why?
   include httpd
   include baseclass
+  realize( Ssh_user["stinky"], Ssh_user["kinky"] )
 }

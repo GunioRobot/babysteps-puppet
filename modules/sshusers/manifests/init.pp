@@ -3,7 +3,7 @@
 #
 # (see bottom of file for how this definition is used)
 
-define ssh_user($comment,$uid,$group) {
+define ssh_user($comment,$uid,$group,$mail) {
 
   # create the user
   user { "$name":
@@ -33,21 +33,36 @@ define ssh_user($comment,$uid,$group) {
     group   => $group,
     require => File["/home/$name/.ssh"]
   }
+
+  mailalias { "$name":
+    ensure    => present,
+    recipient => $mail,
+    notify    => Exec['newaliases']
+  }
+
 }
 
 # now actually use it
 class sshusers {
 
   group { "sysadmins": gid => 5000 }
-  ssh_user { "stinky":
+  @ssh_user { "stinky":
     comment => "Stinky McGinty",
     uid     => 5001,
-    group   => 'sysadmins'
+    group   => 'sysadmins',
+    mail    => 'stinky@gmail.com'
   }
-  ssh_user { "kinky":
+  @ssh_user { "kinky":
     comment => "Kinky Afro",
     uid     => 5002,
-    group   => 'sysadmins'
+    group   => 'sysadmins',
+    mail    => 'kinky@gmail.com'
+  }
+  @ssh_user { "pinky":
+    comment => "Mr. Pink",
+    uid     => 5003,
+    group   => 'sysadmins',
+    mail    => 'pinky@gmail.com'
   }
 
 }

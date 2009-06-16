@@ -1,15 +1,22 @@
-I know, I know. This is *not* the way to setup user accounts.
-
-It's a proof of concept to setup local accounts and allow a
-given public key to connect to them.
+Setup local accounts with a given public key to connect to them.
 
 To create an account, first copy the public key into
 files/public_keys/username, then define a user with
 
-ssh_user { "username":
+@ssh_user { "username":
   comment => "U. Sername",
   uid     => 4566,
-  group   => sysadmins
+  group   => sysadmins,
+  mail    => 'foo@bar.com'
 }
 
-the 'sysadmins' group should exist.
+(the 'sysadmins' group should exist).
+
+We also set up a mail alias
+(depend on Exec['newaliases'] defined in the root_mail module).
+
+In your roles.pp (or nodes.pp), just have a line like
+
+realise(Ssh_user['username'])
+
+to have the user created.

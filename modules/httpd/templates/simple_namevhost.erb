@@ -1,0 +1,13 @@
+# created by Puppet. Do not edit manually.
+
+<VirtualHost *:80>
+  ServerAdmin <%= admin %>
+  ServerName <%= name %>
+  <% aliases.each do |n| %>
+  ServerAlias <%= n -%>
+  <% end %>
+  DocumentRoot /infotree/<%= name %>
+
+  ErrorLog /var/log/httpd/<%= name -%>-error.log
+  CustomLog /var/log/httpd/<%= name -%>-access.log combined
+</VirtualHost>

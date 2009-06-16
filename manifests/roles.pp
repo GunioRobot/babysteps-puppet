@@ -19,7 +19,7 @@ class baseclass {
 }
 
 class webserver {
-  include httpd
   include baseclass
+  include httpd
   realize( Ssh_user["stinky"], Ssh_user["kinky"] )
 }

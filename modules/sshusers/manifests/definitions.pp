@@ -3,7 +3,7 @@
 #
 # (see bottom of file for how this definition is used)
 
-define ssh_user($comment,$uid,$group,$mail) {
+define ssh_user($comment,$uid,$group,$mail,$shell="/bin/bash") {
 
   # create the user
   user { "$name":
@@ -15,7 +15,7 @@ define ssh_user($comment,$uid,$group,$mail) {
     ensure     => present,
     password   => '!',
     uid        => $uid,
-    shell      => '/bin/bash'
+    shell      => $shell
   }
 
   # create ~/.ssh (~/ is created by User[$name])

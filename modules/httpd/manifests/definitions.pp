@@ -1,4 +1,4 @@
-define simple_namevhost($aliases=[],$admin="wwwadmin@cf.ac.uk") {
+define simple_namevhost($aliases=[],$admin="wwwadmin@cf.ac.uk",$ensure=present) {
   # docroot
   file { "/infotree/$name":
     ensure => directory,
@@ -8,7 +8,8 @@ define simple_namevhost($aliases=[],$admin="wwwadmin@cf.ac.uk") {
   file { "$vhosting::vhost_include_dir/$name.vhost":
     mode    => 444,
     content => template("httpd/simple_namevhost.erb"),
-    notify  => Service['httpd']
+    notify  => Service['httpd'],
+    ensure  => $ensure
   }
 
 }

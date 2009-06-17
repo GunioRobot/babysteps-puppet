@@ -3,5 +3,8 @@ capable of http(s), ldap auth and DAV.
 It depends on ldap_client being pulled in
 (to bring the custom CA cert onto the machine).
 
-Obviously we'll need to do something about vhosts
-at some point, but one step at a time, eh?
+For now, we use simple http namevhosts with logging,
+serveraliases, server admin and a docroot.
+Not exactly earth shattering, but already quite complex.
+
+Needs a bit of a refactor and we can start on SSL, SVN repos etc.

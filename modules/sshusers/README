@@ -12,6 +12,9 @@ files/public_keys/username, then define a user with
 
 (the 'sysadmins' group should exist).
 
+This module just creates the ssh_user() definition, see
+top-level manifests/virtual_sshusers.pp for the virtual defs.
+
 We also set up a mail alias
 (depend on Exec['newaliases'] defined in the root_mail module).
 

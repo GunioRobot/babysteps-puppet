@@ -1,6 +1,7 @@
 import "os/*"
 import "roles"
 import "nodes"
+import "virtual_sshusers"
 
 # you can syntax check this file with
 # 'puppet --parseonly site.pp'

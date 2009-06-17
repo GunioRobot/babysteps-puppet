@@ -15,11 +15,11 @@ class baseclass {
   include ssh
   include custom
   include ldap_client
-  include sshusers
 }
 
 class webserver {
   include baseclass
   include httpd
+  realize( Group["sysadmins"])
   realize( Ssh_user["stinky"], Ssh_user["kinky"] )
 }

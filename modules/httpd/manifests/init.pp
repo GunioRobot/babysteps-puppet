@@ -3,6 +3,7 @@ import 'vhosts.pp'
 
 class httpd {
   include baseserver
+  ipt_fragment { "filter-http": ensure => present }
   include vhosting
   include vhosts
 }

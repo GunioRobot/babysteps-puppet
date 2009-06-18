@@ -10,6 +10,7 @@ class baseclass {
     default: {include rhel}
   }
 
+  include iptables
   include motd
   include root_mail
   include ssh

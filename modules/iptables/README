@@ -1,0 +1,9 @@
+(Very slightly) tweaked version of
+http://reductivelabs.com/trac/puppet/wiki/Recipes/ModuleIptables.
+
+The idea is that each service that needs an iptables
+rule calls ipt_fragment { "fragment_file": }
+Puppet arranges for the line(s) in the corresponding
+file to end up in the iptables ruleset on the node.
+
+See file/fragments/* for the list of valid fragment_files.

@@ -4,6 +4,11 @@ class iptables {
   package { "iptables":
     ensure => present
   }
+  service { "iptables":
+    ensure    => running,
+    enable    => true,
+    hasstatus => true
+  }
 
   exec { "rebuild_iptables":
     command     => "/usr/sbin/rebuild-iptables",

@@ -1,0 +1,6 @@
+Simple module to handle time sync.
+
+Requires a variable is set before it is used:
+
+# list of NTP servers to sync from
+$ntpmasters = ['shoemaker.pixie']

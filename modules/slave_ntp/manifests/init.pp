@@ -3,19 +3,16 @@
 #
 class slave_ntp {
 
-    # list of NTP servers to sync from
-    $ntpmasters = ['shoemaker.pixie']
+  file { "ntp.conf" :
+    name    => '/etc/ntp.conf',
+    content => template('slave_ntp/ntp.conf.erb'),
+    notify  => Service['ntpd'],
+    mode    => 444
+  }
 
-    file { "ntp.conf" :
-      name    => '/etc/ntp.conf',
-      content => template('slave_ntp/ntp.conf.erb'),
-      notify  => Service['ntpd'],
-      mode    => 444
-    }
-
-    package { "ntp" : ensure => present }
-    service { "ntpd" :
-      ensure => running,
-      enable => true
-    }
+  package { "ntp" : ensure => present }
+  service { "ntpd" :
+    ensure => running,
+    enable => true
+  }
 }

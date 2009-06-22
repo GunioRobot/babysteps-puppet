@@ -1,0 +1,6 @@
+Have all syslog daemons forward to a central server (the syslogsink). 
+
+To use this module:
+
+1. 'include iptables' (used to open udp/514 on $syslogsink).
+2. set $syslogsink to the FQDN of the syslog sink node

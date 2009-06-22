@@ -12,6 +12,8 @@ class baseclass {
 
   include iptables
   include motd
+  $syslogsink = 'node01.pixie'
+  include syslog
   include root_mail
   include ssh
   include custom

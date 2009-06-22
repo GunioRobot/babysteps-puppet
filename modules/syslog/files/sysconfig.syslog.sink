@@ -1,0 +1,5 @@
+# this file was sent by Puppet.
+# do not edit locally.
+
+# listen for incoming syslog messages
+SYSLOGD_OPTIONS="-m 0 -r"

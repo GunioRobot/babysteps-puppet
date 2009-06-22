@@ -1,2 +1,3 @@
+#### allow inbound IPP
 -A RH-Firewall-1-INPUT -p udp -m udp --dport 631 -j ACCEPT
 -A RH-Firewall-1-INPUT -p tcp -m tcp --dport 631 -j ACCEPT

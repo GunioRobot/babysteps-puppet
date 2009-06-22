@@ -48,6 +48,7 @@ sub prefix {
 -A RH-Firewall-1-INPUT -p 51 -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 # Always allow ssh
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
 END_OF_PREFIX
   }
   elsif ( $type eq 'mangle' ) {
@@ -101,8 +102,8 @@ sub read_iptables {
         } elsif (/^\s*include\s/) {
             die "$0: malformed include line in $file, line $.\n";
         } else {
-      # strip comments/whitespace/blank lines out of module
-      $_ =~ s/\s*#.*$//;
+    ###  # strip comments/whitespace/blank lines out of module
+    ###  $_ =~ s/\s*#.*$//;
       $_ =~ s/^\s*//;
       if ( $_ !~ /^\s*$/ ) {
               push (@data, $_);

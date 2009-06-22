@@ -3,8 +3,6 @@
 class ssh {
   $permitrootlogin = 'without-password'
 
-  ipt_fragment{"filter-ssh" : ensure => present}
-
   file { "/etc/ssh/sshd_config" :
     notify  => Service['sshd'],
     content => template("ssh/sshd_config.erb"),

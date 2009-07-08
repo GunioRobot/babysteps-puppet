@@ -1,0 +1,38 @@
+General rules of thumb for puppet layout
+(not necessarily true yet, will be amended as we go).
+
+general
+- no editing of any files outside /etc/puppet on puppetmaster
+  (use "custom" module to add types/facts/providers to the nodes;
+  set modulepath etc. in puppet.conf to live under /etc/puppet on master)
+- everything to be git versioned
+- stock (EPEL) RPMs only. Use 'localrepo' module for 3rd party bits.
+
+modules
+- module for each bit of functionality
+  (files/templates etc. to be served from there)
+- README per module; describe dependencies and assumptions
+- definitions.pp holds custom defines for a module
+- any customs types/definitions should support 'ensure => absent' 
+
+'toplevel' files
+- roles.pp describes inheritance hierarchy
+- nodes.pp assigns roles to hosts
+- virtual resource are realised (not in modules themselves)
+- global variables set in the node defns (so overridable)
+
+manifests
+- line up your arrows
+- 2 space indentation
+
+files
+- Files notify Services only if required (e.g. they need a reload)
+- Files modes are readonly to discourage local edits
+- Files contain a comment explaining they are Puppet controlled
+
+dependencies
+- Packages notify Services
+- Services require Packages
+- Files require Packages
+  (saves us having to create e.g. /etc/snmp by hand; let RPM do it)
+

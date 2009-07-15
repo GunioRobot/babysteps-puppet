@@ -1,7 +1,20 @@
 This is my first puppet repo, which runs on
 a network of VirtualBox nodes I setup on my laptop.
 
-All the good bits are under modules/.
+This repo contains the whole of /etc/puppet, so it should
+be usable as is. 
+
+OS support is limited to CentOS/RHEL for now,
+
+
+site-specific bits are under manifests/
+(hopefully) reusable bits are under modules/
 
 Don't go using this as any kind of reference, I am
 still a noob (although slowly getting the hang of it).
+
+
+It's intentionally basic (Keep It Stupid, Simple).
+
+There are far smarter people writing puppet modules on github if
+you need something complex.

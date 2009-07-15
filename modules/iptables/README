@@ -7,3 +7,6 @@ Puppet arranges for the line(s) in the corresponding
 file to end up in the iptables ruleset on the node.
 
 See file/fragments/* for the list of valid fragment_files.
+
+There's a slight bug that seems to prevent the /etc/iptables.d
+directory being purged, but I'm not sure where I'm going wrong.

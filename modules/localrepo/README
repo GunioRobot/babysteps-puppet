@@ -1,0 +1,10 @@
+Yum repo.
+
+Quick and dirty hack, run it on the puppetmaster
+(though any other apache server should work too).
+
+To add repos, 
+
+mkdir -p /var/www/html/reponame
+cp rpms /var/www/html/reponame
+createrepo -d -v /var/www/html/reponame

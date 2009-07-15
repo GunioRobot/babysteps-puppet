@@ -11,6 +11,7 @@ class baseclass {
   }
 
   include iptables
+  include localrepo
   include motd
   $syslogsink = 'node01.pixie'
   include syslog

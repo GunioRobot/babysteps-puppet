@@ -2,14 +2,12 @@
 # roles
 
 # classes common to all servers
-class baseclass {
-
+class standardbuild {
   case $operatingsystem {
     centos: { include centos }
     rhel: { include rhel }
     default: {include rhel}
   }
-
   include localrepo
   include iptables
   include motd
@@ -20,25 +18,8 @@ class baseclass {
   include custom
   include ldap_client
 }
-
-class noiptablesbaseclass {
-
-  case $operatingsystem {
-    centos: { include centos }
-    rhel: { include rhel }
-    default: {include rhel}
-  }
-
-  include localrepo
-  include iptables
+class nofirewallbuild inherits standardbuild {
   include iptables::disabled
-  include motd
-  $syslogsink = 'node01.pixie'
-  include syslog
-  include root_mail
-  include ssh
-  include custom
-  include ldap_client
 }
 
 class webserver {

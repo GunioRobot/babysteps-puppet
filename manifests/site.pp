@@ -1,7 +1,6 @@
 import "os/*"
 import "roles"
 import "nodes"
-import "virtual_vhosts"
 import "virtual_sshusers"
 
 # you can syntax check this file with

@@ -21,9 +21,3 @@ class standardbuild {
 class nofirewallbuild inherits standardbuild {
   include iptables::disabled
 }
-
-class webserver {
-  include httpd
-  realize( Group["sysadmins"])
-  realize( Ssh_user["stinky"], Ssh_user["kinky"] )
-}

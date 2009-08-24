@@ -1,6 +1,7 @@
 # take care of SSHing into the box as root
 # assume package was installed via kick/jumpstart
 class ssh {
+  ipt_fragment { 'filter-ssh': ensure => present }
   $permitrootlogin = 'without-password'
 
   file { "/etc/ssh/sshd_config" :

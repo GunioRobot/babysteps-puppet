@@ -28,3 +28,10 @@ class iptables {
     notify => Exec["rebuild_iptables"]
   }
 }
+
+class iptables::disabled inherits iptables {
+  Service['iptables'] {
+    ensure => stopped,
+    enable => false
+}
+}

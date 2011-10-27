@@ -13,7 +13,7 @@ modules
   (files/templates etc. to be served from there)
 - README per module; describe dependencies and assumptions
 - definitions.pp holds custom defines for a module
-- any customs types/definitions should support 'ensure => absent' 
+- any customs types/definitions should support 'ensure => absent'
 
 'toplevel' files
 - roles.pp describes inheritance hierarchy

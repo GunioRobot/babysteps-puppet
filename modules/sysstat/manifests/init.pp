@@ -20,7 +20,7 @@ class sysstat {
       content => template('sysstat/sa1.sh.erb'),
       mode    => '555',
       require => Package['sysstat']
-    } 
+    }
   } else {
     file { '/usr/lib/sa/sa1':
       content => template('sysstat/sa1.sh.erb'),

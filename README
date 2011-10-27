@@ -2,7 +2,7 @@ This is my first puppet repo, which runs on
 a network of VirtualBox nodes I setup on my laptop.
 
 This repo contains the whole of /etc/puppet, so it should
-be usable as is. 
+be usable as is.
 
 OS support is limited to CentOS/RHEL for now,
 

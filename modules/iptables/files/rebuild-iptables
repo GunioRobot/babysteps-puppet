@@ -233,7 +233,7 @@ an B<iptables> invocation), possibly including comments.
 
 NOTE: the module name needs to be prefixed with either filter- or mangle- . For
 example: /etc/iptables.d/filter-foo. This is required so the rules can be put
-in the appropriate table. 
+in the appropriate table.
 
 WARNING: if the module name is not prefixed with filter- or mangle- it WILL be
 ignored.

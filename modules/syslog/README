@@ -1,4 +1,4 @@
-Have all syslog daemons forward to a central server (the syslogsink). 
+Have all syslog daemons forward to a central server (the syslogsink).
 
 To use this module:
 
